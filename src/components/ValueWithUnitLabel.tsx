@@ -3,21 +3,25 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 
-export interface ValueWithUnitProps {
+export interface ValueWithUnit {
 	value: number;
 	prefix?: string;
 	unit?: string;
 }
 
-const ValueWithUnit = (props: ValueWithUnitProps) => {
+export interface ValueWithUnitLabelProps {
+	value: ValueWithUnit;
+}
+
+const ValueWithUnitLabel = (props: ValueWithUnitLabelProps) => {
 	// プレフィックスが与えられているか
 	const hasPrefix = () => {
-		return props.prefix !== undefined && props.prefix !== "";
+		return props.value.prefix !== undefined && props.value.prefix !== "";
 	};
 
 	// 単位が与えられているかどうか
 	const hasUnit = () => {
-		return props.unit !== undefined && props.unit !== "";
+		return props.value.unit !== undefined && props.value.unit !== "";
 	};
 
 	// 小さい文字共通スタイル
@@ -42,17 +46,17 @@ const ValueWithUnit = (props: ValueWithUnitProps) => {
 				{/* プレフィックス部分 */}
 				{hasPrefix() && (
 					<span className="value-with-unit__prefix" css={prefixStyle}>
-						{props.prefix}
+						{props.value.prefix}
 					</span>
 				)}
 
 				{/* 値部分 */}
-				<span className="value-with-unit__value">{props.value}</span>
+				<span className="value-with-unit__value">{props.value.value}</span>
 
 				{/* 単位部分 */}
 				{hasUnit() && (
 					<span className="value-with-unit__unit" css={unitStyle}>
-						{props.unit}
+						{props.value.unit}
 					</span>
 				)}
 			</span>
@@ -60,4 +64,4 @@ const ValueWithUnit = (props: ValueWithUnitProps) => {
 	);
 };
 
-export default ValueWithUnit;
+export default ValueWithUnitLabel;
