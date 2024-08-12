@@ -1,7 +1,7 @@
 // 単位変更ボタン付きの値表示カード
 
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { type SerializedStyles, css } from "@emotion/react";
 import {
 	Card,
 	CardContent,
@@ -23,6 +23,7 @@ export interface UnitConversionCardProps {
 	label: string;
 	origValue: number;
 	unitButtons: UnitButton[];
+	cssStyle?: SerializedStyles;
 }
 
 const unitConversionCard = (props: UnitConversionCardProps) => {
@@ -47,6 +48,7 @@ const unitConversionCard = (props: UnitConversionCardProps) => {
 	// 単位付きの値
 	const valueWithUnit: ValueWithUnit = {
 		value: displayValue,
+		decimalPlaces: 1,
 		unit: selectedUnitButton?.unitLabel,
 	};
 
@@ -77,7 +79,7 @@ const unitConversionCard = (props: UnitConversionCardProps) => {
 	));
 
 	return (
-		<Card>
+		<Card variant="outlined" css={props.cssStyle}>
 			<CardContent>
 				{/* 値表示 */}
 				<div>
