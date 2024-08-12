@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import emotionReset from "emotion-reset";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import Top from "./Top.tsx";
 
 // Material UIのテーマ
 const muiTheme = createTheme({
@@ -18,6 +18,7 @@ const muiTheme = createTheme({
 // グローバルスタイル
 const globalStyle = css(emotionReset, {
 	body: {
+		backgroundColor: "rgb(242, 242, 248)",
 		fontFamily:
 			'"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
 	},
@@ -30,7 +31,7 @@ if (targetElem !== null) {
 			<Global styles={globalStyle} />
 			<StrictMode>
 				<ThemeProvider theme={muiTheme}>
-					<App />
+					<Top />
 				</ThemeProvider>
 			</StrictMode>
 		</>,

@@ -5,6 +5,7 @@ import { css } from "@emotion/react";
 
 export interface ValueWithUnit {
 	value: number;
+	decimalPlaces?: number;
 	prefix?: string;
 	unit?: string;
 }
@@ -25,7 +26,12 @@ const ValueWithUnitLabel = (props: ValueWithUnitLabelProps) => {
 	const hasUnit = props.value.unit !== undefined && props.value.unit !== "";
 
 	// 表示する値
-	const displayValue = !isInvalidValue ? props.value.value.toFixed(1) : "--";
+	let displayValue = "--";
+	if (!isInvalidValue) {
+		displayValue = props.value.decimalPlaces
+			? props.value.value.toFixed(props.value.decimalPlaces)
+			: props.value.value.toString();
+	}
 
 	// 小さい文字共通スタイル
 	const smallTextStyle = css({
