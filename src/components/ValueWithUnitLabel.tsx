@@ -14,15 +14,18 @@ export interface ValueWithUnitLabelProps {
 }
 
 const ValueWithUnitLabel = (props: ValueWithUnitLabelProps) => {
+	// 無効な値かどうか
+	const isInvalidValue = Number.isNaN(props.value.value);
+
 	// プレフィックスが与えられているか
-	const hasPrefix = () => {
-		return props.value.prefix !== undefined && props.value.prefix !== "";
-	};
+	const hasPrefix =
+		props.value.prefix !== undefined && props.value.prefix !== "";
 
 	// 単位が与えられているかどうか
-	const hasUnit = () => {
-		return props.value.unit !== undefined && props.value.unit !== "";
-	};
+	const hasUnit = props.value.unit !== undefined && props.value.unit !== "";
+
+	// 表示する値
+	const displayValue = !isInvalidValue ? props.value.value.toFixed(1) : "--";
 
 	// 小さい文字共通スタイル
 	const smallTextStyle = css({
@@ -41,26 +44,24 @@ const ValueWithUnitLabel = (props: ValueWithUnitLabelProps) => {
 	});
 
 	return (
-		<>
-			<span className="value-with-unit">
-				{/* プレフィックス部分 */}
-				{hasPrefix() && (
-					<span className="value-with-unit__prefix" css={prefixStyle}>
-						{props.value.prefix}
-					</span>
-				)}
+		<span className="value-with-unit">
+			{/* プレフィックス部分 */}
+			{hasPrefix && (
+				<span className="value-with-unit__prefix" css={prefixStyle}>
+					{props.value.prefix}
+				</span>
+			)}
 
-				{/* 値部分 */}
-				<span className="value-with-unit__value">{props.value.value}</span>
+			{/* 値部分 */}
+			<span className="value-with-unit__value">{displayValue}</span>
 
-				{/* 単位部分 */}
-				{hasUnit() && (
-					<span className="value-with-unit__unit" css={unitStyle}>
-						{props.value.unit}
-					</span>
-				)}
-			</span>
-		</>
+			{/* 単位部分 */}
+			{hasUnit && (
+				<span className="value-with-unit__unit" css={unitStyle}>
+					{props.value.unit}
+				</span>
+			)}
+		</span>
 	);
 };
 
