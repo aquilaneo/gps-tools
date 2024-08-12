@@ -2,9 +2,16 @@
 
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Card, CardContent, ToggleButton, ToggleButtonGroup, } from "@mui/material";
+import {
+	Card,
+	CardContent,
+	ToggleButton,
+	ToggleButtonGroup,
+} from "@mui/material";
 import { useState } from "react";
-import ValueWithUnitLabel, { type ValueWithUnit, } from "./ValueWithUnitLabel.tsx";
+import ValueWithUnitLabel, {
+	type ValueWithUnit,
+} from "./ValueWithUnitLabel.tsx";
 
 export interface UnitButton {
 	unitLabel: string;
