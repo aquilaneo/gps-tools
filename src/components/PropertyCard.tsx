@@ -1,9 +1,11 @@
 // 値と単位のリストを表示するカードコンポーネント
 
 /** @jsxImportSource @emotion/react */
-import { Card, CardContent } from "@mui/material";
 import { css } from "@emotion/react";
-import ValueWithUnitLabel, { type ValueWithUnit, } from "./ValueWithUnitLabel.tsx";
+import { Card, CardContent } from "@mui/material";
+import ValueWithUnitLabel, {
+	type ValueWithUnit,
+} from "./ValueWithUnitLabel.tsx";
 
 export interface Property {
 	id: string;
