@@ -4,9 +4,13 @@ import PropertyCard, { type Property } from "./components/PropertyCard.tsx";
 import UnitConversionCard, {
 	type UnitButton,
 } from "./components/UnitConversionCard.tsx";
+import useGeolocation from "./hooks/useGeolocation.ts";
 import { msToKmh, msToKt } from "./utils/unit-conversion.ts";
 
 function Top() {
+	// 位置情報取得
+	const geolocationInfo = useGeolocation();
+
 	// 速度情報
 	const unitButtons: UnitButton[] = [
 		{
@@ -31,17 +35,22 @@ function Top() {
 		{
 			label: "緯度",
 			id: "latitude",
-			value: { value: 35.685175 },
+			value: { value: geolocationInfo.latitude ?? Number.NaN },
 		},
 		{
 			label: "経度",
 			id: "longitude",
-			value: { value: 139.7528 },
+			value: { value: geolocationInfo.longitude ?? Number.NaN },
 		},
 		{
 			label: "精度",
 			id: "accuracy",
-			value: { value: 10, decimalPlaces: 1, prefix: "±", unit: "m" },
+			value: {
+				value: geolocationInfo.positionAccuracy ?? Number.NaN,
+				decimalPlaces: 1,
+				prefix: "±",
+				unit: "m",
+			},
 		},
 	];
 
@@ -50,12 +59,21 @@ function Top() {
 		{
 			label: "標高",
 			id: "altitude",
-			value: { value: 10, decimalPlaces: 1, unit: "m" },
+			value: {
+				value: geolocationInfo.altitude ?? Number.NaN,
+				decimalPlaces: 1,
+				unit: "m",
+			},
 		},
 		{
 			label: "精度",
 			id: "accuracy",
-			value: { value: 10, decimalPlaces: 1, prefix: "±", unit: "m" },
+			value: {
+				value: geolocationInfo.altitudeAccuracy ?? Number.NaN,
+				decimalPlaces: 1,
+				prefix: "±",
+				unit: "m",
+			},
 		},
 	];
 
@@ -76,7 +94,7 @@ function Top() {
 			{/* 速度 */}
 			<UnitConversionCard
 				label="速度"
-				origValue={80}
+				origValue={geolocationInfo.speed ?? Number.NaN}
 				unitButtons={unitButtons}
 				cssStyle={cardStyle}
 			/>
