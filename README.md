@@ -1,8 +1,27 @@
-# React + TypeScript + Vite
+# GPS Tools
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
 
-Currently, two official plugins are available:
+位置情報関連の表示を行うWebサービスです。個人利用目的で作成しましたが、MITライセンスで公開しているのでライセンス範囲内で自由に使用できます。  
+以下の情報をただページに表示するだけになります。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 速度
+- 緯度
+- 経度
+- 位置情報の精度
+- 標高
+- 標高の精度
+
+## 使用ライブラリなど技術情報
+
+- React
+- TypeScript
+- Vite
+- Biome
+- Material UI
+
+PWAに対応しています。
+
+## その他
+アイコンはICOON MONO様のものを使わせていただいています。  
+https://icooon-mono.com/
