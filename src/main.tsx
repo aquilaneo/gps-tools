@@ -18,9 +18,9 @@ const muiTheme = createTheme({
 // グローバルスタイル
 const globalStyle = css(emotionReset, {
 	body: {
-		backgroundColor: "rgb(242, 242, 248)",
+		backgroundColor: "#f2f2f8",
 		fontFamily:
-			'"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
+			'"Helvetica Neue", Arial, "Hiragino Maru Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
 	},
 });
 
